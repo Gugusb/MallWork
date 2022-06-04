@@ -22,24 +22,20 @@ public class UserController {
 	private UserService actionUserService;
 
 	@RequestMapping(value = "/getstring")
-	public String getString(){
-		return "hekai";
+	public String getString(String qwq){
+		return qwq;
 	}
 
 	@RequestMapping("/do_login.do")
 	@ResponseBody
 	public SverResponse<User> doLogin(HttpSession session, String account, String password) {
-		//1.调用service登录方法
 		SverResponse<User> response = actionUserService.doLogin(account, password);
-		//2.判断是否能登录登录后状态存储在session中
 		if (response.isSuccess()) {
-			//3.能登录则判断是否是管理员，是管理员存放在session，否则报告错误信息
 			User user = response.getData();
 			if(user.getRole()== ConstUtil.Role.ROLE_ADMIN) {
 				session.setAttribute(ConstUtil.CUR_USER, user);
 				return response;
 			}
-//			return SverResponse.createByErrorMessage("不是管理员无法登录！");
 			if (user.getRole()==ConstUtil.Role.ROLE_CUSTOMER) {
 				session.setAttribute(ConstUtil.CUR_USER, user);
 				return response;

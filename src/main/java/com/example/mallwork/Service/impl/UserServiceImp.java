@@ -23,21 +23,16 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public SverResponse<User> doLogin(String account, String password) {
-		// TODO Auto-generated method stub
-		//1.�ж��û����Ƿ����
 		int rs = actionUserDao.checkUserByAccount(account);
+		System.out.println("RS " + rs + " " + account + " " + password);
 		if (rs==0) {
 			return SverResponse.createByErrorMessage("�û�������");
 		}
-		//2.�����û�����������Ҳ��Ҽ�������
 		String md5pwd = MD5Util.MD5Encode(password,"utf-8",false);
 		User user=actionUserDao.findUserByAccountAndPassword(account, md5pwd);
-
-		//3.�ж��û��Ƿ���ڣ���������Ϣ��ʾ
 		if (user==null) {
 			return SverResponse.createByErrorMessage("�������");
 		}
-		//�ÿ�����
 		user.setPassword(StringUtils.EMPTY);
 		return SverResponse.createRespBySuccess("��¼�ɹ���",user);
 	}
