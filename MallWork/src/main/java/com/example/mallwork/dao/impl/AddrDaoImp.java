@@ -27,6 +27,7 @@ public  class AddrDaoImp implements AddrDao {
 		//查询
 		String sql = "select count(id) as num from action_address where user_id = ? and default_addr=1 and del_state=0";
 		try {
+			//返回list结果集
 			return queryRunner.query(sql,new ColumnListHandler<Long>("num"),userId).get(0).intValue();
 		} catch (SQLException e) {
 			e.printStackTrace();

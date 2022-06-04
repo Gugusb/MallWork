@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Service
 public class UserServiceImp implements UserService {
-	//����actionuserdao����
+	//创建actionuserdao对象
 	@Autowired//�Զ�װ�ض���
 	private UserDao actionUserDao;
 

@@ -35,7 +35,7 @@ public class OrderServiceImp implements OrderService {
 	@Autowired
 	private ProductDao ProductDao;
 	/**
-	 * ��ѯ���ж����б��ҳ��ʾ
+	 * 查询所有订单列表分页显示
 	 */
 	@Override
 	public SverResponse<PageBean<OrderVo>> findOrder(Integer userid, Integer status, int pageNum, int pageSize) {

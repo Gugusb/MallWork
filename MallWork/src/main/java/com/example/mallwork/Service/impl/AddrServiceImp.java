@@ -16,7 +16,7 @@ public class AddrServiceImp implements AddrService {
 	private AddrDao actionAddrDao;
 	
 	/**
-	 * �����ջ���ַ
+	 *新增收货地址
 	 */
 	@Override
 	public SverResponse<String> addAddress(Address addr) {
